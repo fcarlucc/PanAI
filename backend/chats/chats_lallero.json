@@ -1,0 +1,142 @@
+{
+  "chats": [
+    {
+      "role": "user",
+      "content": "ciao"
+    },
+    {
+      "role": "assistant",
+      "content": "Ciao! Come posso aiutarti oggi?"
+    },
+    {
+      "role": "user",
+      "content": "vediamo se funziona lo smartcontract"
+    },
+    {
+      "role": "assistant",
+      "content": "Interessante! Sei nel posto giusto per simulare l'esperienza.\n\n**Se volessi testare, dimmi pure cosa dovrebbe fare il tuo smart contract.**\n\nAd esempio, potrei farti queste domande per aiutarti a \"simulare\" il suo funzionamento:\n\n1. **Qual è lo scopo del contratto?** (È un token, un sistema di voto, un'asta?)\n2. **Quale funzione vuoi che io \"chiami\"?** (Es. `mint()`, `transfer()`, `vote()`)\n3. **Ci sono delle condizioni (require) che potrebbero bloccarlo?**\n\nAspetto i dettagli del tuo smart contract!"
+    }
+  ],
+  "logs": [
+    {
+      "user_id": "lallero",
+      "created": 1760805345,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "message": "ciao",
+      "response": "Ciao! Come posso aiutarti oggi?",
+      "system_fingerprint": "fp_560af6e559"
+    },
+    {
+      "user_id": "lallero",
+      "created": 1760805357,
+      "provider": "google",
+      "model": "google/gemini-2.5-flash-preview-09-2025",
+      "message": "vediamo se funziona lo smartcontract",
+      "response": "Interessante! Sei nel posto giusto per simulare l'esperienza.\n\n**Se volessi testare, dimmi pure cosa dovrebbe fare il tuo smart contract.**\n\nAd esempio, potrei farti queste domande per aiutarti a \"simulare\" il suo funzionamento:\n\n1. **Qual è lo scopo del contratto?** (È un token, un sistema di voto, un'asta?)\n2. **Quale funzione vuoi che io \"chiami\"?** (Es. `mint()`, `transfer()`, `vote()`)\n3. **Ci sono delle condizioni (require) che potrebbero bloccarlo?**\n\nAspetto i dettagli del tuo smart contract!",
+      "system_fingerprint": "none"
+    }
+  ],
+  "messages": [
+    {
+      "user_id": "lallero",
+      "created": 1760805345,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "ciao",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "ae9479f811",
+      "content_type": "user",
+      "content_hash": "af338f1d72be19bb072a923e14a6e7258c0115ca8a201ecb6da41404424d200b",
+      "content_hash_fhe": "FHE_CTXT_b6a0661a69f653338696ae49b68ad87a305f956c60a5e9f8fb82bf4975bf1ef7",
+      "canonical_json": "{\"content\":\"ciao\",\"content_type\":\"user\",\"created\":1760805345,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"ae9479f811\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"lallero\"}",
+      "tree_id": "2025-10-18",
+      "leaf_index": 0,
+      "proof": []
+    },
+    {
+      "user_id": "lallero",
+      "created": 1760805345,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "Ciao! Come posso aiutarti oggi?",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "414747926f",
+      "content_type": "assistant",
+      "content_hash": "6ea115a9088d93afb2901ea33e0cfe6987486cc50990833bd39883da996558ad",
+      "content_hash_fhe": "FHE_CTXT_7732fcae13c5d927332c22d49c20c1363b16ec63e315740845be2897ae976651",
+      "canonical_json": "{\"content\":\"Ciao! Come posso aiutarti oggi?\",\"content_type\":\"assistant\",\"created\":1760805345,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"414747926f\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"lallero\"}",
+      "tree_id": "2025-10-18",
+      "leaf_index": 1,
+      "proof": [
+        {
+          "pos": "left",
+          "h": "af338f1d72be19bb072a923e14a6e7258c0115ca8a201ecb6da41404424d200b"
+        }
+      ]
+    },
+    {
+      "user_id": "lallero",
+      "created": 1760805357,
+      "provider": "google",
+      "model": "google/gemini-2.5-flash-preview-09-2025",
+      "content": "vediamo se funziona lo smartcontract",
+      "system_fingerprint": "none",
+      "nonce": "b5eb5516b7",
+      "content_type": "user",
+      "content_hash": "49291b2b3a963c72861059dd3a7a93fdc2e366a107a71c693f1a24544b33b876",
+      "content_hash_fhe": "FHE_CTXT_50baf22c21de76fa07ac65aa9856aca27ebde607ed22eb5aa93c8f197cc1868a",
+      "canonical_json": "{\"content\":\"vediamo se funziona lo smartcontract\",\"content_type\":\"user\",\"created\":1760805357,\"model\":\"google/gemini-2.5-flash-preview-09-2025\",\"nonce\":\"b5eb5516b7\",\"provider\":\"google\",\"system_fingerprint\":\"none\",\"user_id\":\"lallero\"}",
+      "tree_id": "2025-10-18",
+      "leaf_index": 2,
+      "proof": [
+        {
+          "pos": "right",
+          "h": "49291b2b3a963c72861059dd3a7a93fdc2e366a107a71c693f1a24544b33b876"
+        },
+        {
+          "pos": "left",
+          "h": "a1c14ae96d55c05e1d97c95857d4572b571d52fcc3ee1379d4fa6ed80a9a54ae"
+        }
+      ]
+    },
+    {
+      "user_id": "lallero",
+      "created": 1760805357,
+      "provider": "google",
+      "model": "google/gemini-2.5-flash-preview-09-2025",
+      "content": "Interessante! Sei nel posto giusto per simulare l'esperienza.\n\n**Se volessi testare, dimmi pure cosa dovrebbe fare il tuo smart contract.**\n\nAd esempio, potrei farti queste domande per aiutarti a \"simulare\" il suo funzionamento:\n\n1. **Qual è lo scopo del contratto?** (È un token, un sistema di voto, un'asta?)\n2. **Quale funzione vuoi che io \"chiami\"?** (Es. `mint()`, `transfer()`, `vote()`)\n3. **Ci sono delle condizioni (require) che potrebbero bloccarlo?**\n\nAspetto i dettagli del tuo smart contract!",
+      "system_fingerprint": "none",
+      "nonce": "5881961b9c",
+      "content_type": "assistant",
+      "content_hash": "0d9ec488acd964509e5649c7e19ad6d192fda8aa18c877c56319e645850f21c7",
+      "content_hash_fhe": "FHE_CTXT_140d2d8fb7912ed81fea75b043b6e98e2ea3280cf24d80f6f53f4d08b2fd1f3b",
+      "canonical_json": "{\"content\":\"Interessante! Sei nel posto giusto per simulare l'esperienza.\\n\\n**Se volessi testare, dimmi pure cosa dovrebbe fare il tuo smart contract.**\\n\\nAd esempio, potrei farti queste domande per aiutarti a \\\"simulare\\\" il suo funzionamento:\\n\\n1. **Qual è lo scopo del contratto?** (È un token, un sistema di voto, un'asta?)\\n2. **Quale funzione vuoi che io \\\"chiami\\\"?** (Es. `mint()`, `transfer()`, `vote()`)\\n3. **Ci sono delle condizioni (require) che potrebbero bloccarlo?**\\n\\nAspetto i dettagli del tuo smart contract!\",\"content_type\":\"assistant\",\"created\":1760805357,\"model\":\"google/gemini-2.5-flash-preview-09-2025\",\"nonce\":\"5881961b9c\",\"provider\":\"google\",\"system_fingerprint\":\"none\",\"user_id\":\"lallero\"}",
+      "tree_id": "2025-10-18",
+      "leaf_index": 3,
+      "proof": [
+        {
+          "pos": "left",
+          "h": "49291b2b3a963c72861059dd3a7a93fdc2e366a107a71c693f1a24544b33b876"
+        },
+        {
+          "pos": "left",
+          "h": "a1c14ae96d55c05e1d97c95857d4572b571d52fcc3ee1379d4fa6ed80a9a54ae"
+        }
+      ]
+    }
+  ],
+  "trees": {
+    "2025-10-18": {
+      "algo": "SHA-256",
+      "canon_rules": "JCS-like",
+      "leaves": [
+        "af338f1d72be19bb072a923e14a6e7258c0115ca8a201ecb6da41404424d200b",
+        "6ea115a9088d93afb2901ea33e0cfe6987486cc50990833bd39883da996558ad",
+        "49291b2b3a963c72861059dd3a7a93fdc2e366a107a71c693f1a24544b33b876",
+        "0d9ec488acd964509e5649c7e19ad6d192fda8aa18c877c56319e645850f21c7"
+      ],
+      "root": "887341c875961854cdd86c78667ad99cee3b691f6ded4e3514a78bf7c58704f5"
+    }
+  }
+}
