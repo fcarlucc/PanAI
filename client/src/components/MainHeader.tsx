@@ -1,23 +1,23 @@
 "use client";
-import { useUser } from "@civic/auth-web3/react";
+import { useAccount, useDisconnect, useEnsName } from "wagmi";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function MainHeader() {
   const router = useRouter();
   const pathname = usePathname();
-  const { user, signOut } = useUser();
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { data: ensName } = useEnsName({ address });
 
   const isHomePage = pathname === '/';
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      // Forza il redirect a /preview dopo logout
-      window.location.href = '/preview';
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
+  const handleDisconnect = () => {
+    disconnect();
+    // Redirect a /preview dopo disconnessione
+    router.push('/preview');
   };
+
+  const displayName = ensName || (address ? `${address.slice(0, 6)}...${address.slice(-4)}` : '');
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur border-b border-gray-800">
@@ -43,14 +43,14 @@ export default function MainHeader() {
         )}
         
         <div className="flex lg:flex-1 lg:justify-end items-center gap-4">
-          {user && (
+          {isConnected && address && (
             <>
-              <span className="text-sm text-gray-300">Hello, {user.email}</span>
+              <span className="text-sm text-gray-300">Hello, {displayName}</span>
               <button
-                onClick={handleSignOut}
+                onClick={handleDisconnect}
                 className="text-sm font-semibold text-white hover:text-red-400 transition bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700"
               >
-                Logout
+                Disconnect
               </button>
             </>
           )}

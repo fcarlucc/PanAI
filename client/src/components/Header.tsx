@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { UserButton } from "@civic/auth-web3/react";
+import { ConnectKitButton } from "connectkit";
 
 const sections = [
   { id: "hero", label: "Home" },
@@ -74,7 +74,7 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <UserButton />
+          <ConnectKitButton />
         </div>
       </nav>
 

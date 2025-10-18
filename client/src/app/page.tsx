@@ -1,19 +1,26 @@
-import { getUser } from "@civic/auth-web3/nextjs";
-import { redirect } from 'next/navigation';
+"use client";
+import { useRequireAuth } from "@/hooks/useAuth";
 import MainHeader from "../components/MainHeader";
 import UserStats from "../components/UserStats";
 import BalanceSection from "../components/BalanceSection";
 import WithdrawButton from "../components/WithdrawButton";
 
-export default async function Home() {
-  const user = await getUser();
+export default function Home() {
+  const { isConnected, isConnecting } = useRequireAuth();
 
-  // Se non è autenticato, redirect alla preview
-  if (!user) {
-    redirect('/preview');
+  // Mostra loading durante la verifica dell'autenticazione
+  if (isConnecting || !isConnected) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-lg">Verifying connection...</p>
+        </div>
+      </div>
+    );
   }
 
-  // Utente autenticato - mostra la home
+  // Utente connesso - mostra la home
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <MainHeader />

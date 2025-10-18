@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { useUser } from "@civic/auth-web3/react";
+import { useAccount, useDisconnect } from "wagmi";
 import { useRouter } from "next/navigation";
+import { useRequireAuth } from "@/hooks/useAuth";
 import MainHeader from "@/components/MainHeader";
 
 interface Chat {
@@ -27,7 +28,9 @@ const AVAILABLE_MODELS = [
 
 export default function ChatPage() {
   const router = useRouter();
-  const { user, signOut } = useUser();
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { isConnecting } = useRequireAuth();
   
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [chats, setChats] = useState<Chat[]>([
@@ -40,14 +43,22 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showModelSelector, setShowModelSelector] = useState(false);
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      window.location.href = '/preview';
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
+  const handleDisconnect = () => {
+    disconnect();
+    router.push('/preview');
   };
+
+  // Mostra loading durante la verifica
+  if (isConnecting || !isConnected) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-lg">Verifying connection...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleNewChat = () => {
     const newChat: Chat = {
@@ -136,13 +147,13 @@ export default function ChatPage() {
         <div className="p-4 border-t border-gray-800">
           <div className="flex items-center gap-3">
             <div className="flex-1">
-              <p className="text-sm font-semibold truncate">{user?.name || 'User'}</p>
-              <p className="text-xs text-gray-400 truncate">{user?.email}</p>
+              <p className="text-sm font-semibold truncate">{address ? `${address.slice(0, 6)}...${address.slice(-4)}` : 'Not connected'}</p>
+              <p className="text-xs text-gray-400 truncate">{isConnected ? 'Connected' : 'Disconnected'}</p>
             </div>
             <button
-              onClick={handleSignOut}
+              onClick={handleDisconnect}
               className="text-gray-400 hover:text-white transition"
-              title="Logout"
+              title="Disconnect"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
