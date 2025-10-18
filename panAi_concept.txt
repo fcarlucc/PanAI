@@ -1,0 +1,188 @@
+Perfetto — ecco il contenuto completo (testi pronti) per una landing page di PAN — Protocol for AI Notarization. Puoi incollarlo in qualsiasi CMS/Next.js; i blocchi sono già pensati per sezioni “Hero / About / How it works / Features / Trust / Tech Stack / Use cases / Roadmap / FAQ / CTA”.
+
+Hero
+
+PAN — Protocol for AI Notarization
+Lo standard aperto per notarizzare, ancorare e verificare contenuti (umani o AI) con privacy by design.
+
+Notarizza messaggi e chat con hash → Merkle → root on-chain (Base)
+
+Verifica un contenuto anche con solo l’hash
+
+Opzionale: verifiche private (near-duplicate / soglia semantica) con crittografia avanzata
+
+CTA primario: Prova la demo
+CTA secondario: Leggi la documentazione
+
+Perché PAN
+
+Oggi condividiamo testi, immagini e code ovunque — ma manca la prova che un contenuto sia autentico, non manipolato e di chi lo rivendica. PAN fornisce provenienza verificabile e strumenti di verifica (anche privati) senza salvare plaintext sul server.
+
+Come funziona (in 30 secondi)
+
+Normalize & Hash
+Il contenuto viene normalizzato (Unicode NFC, LF) e hashato (SHA-256) in modo deterministico.
+
+Merkle per sessione
+Ogni conversazione diventa un Merkle tree; la radice garantisce ordine e integrità.
+
+Root on-chain (Base)
+La session root viene pubblicata come evento su Base (L2). Nessun testo on-chain, solo prove.
+
+Verifica istantanea
+Con solo l’hash ottieni proof → root → evento: Exact/On-chain.
+
+Privacy by design
+I contenuti sono cifrati client-side. Il server vede solo hash, metadati e pointer ai blob.
+
+(Opzionale) Privacy+: near-duplicate privato e soglia semantica come esito sì/no su dati cifrati.
+
+Cosa puoi fare con PAN
+
+Notarizzare messaggi, articoli, post, codice e asset multimediali
+
+Firmare in batch conversazioni intere con un solo evento on-chain
+
+Verificare post-hoc con hash-only (anche se il contenuto non è pubblico)
+
+Dimostrare originalità e “stesso significato?” con controlli fuzzy/semantici
+
+Integrare nei tuoi prodotti via API/SDK, Mini-App e CLI
+
+Caratteristiche principali
+
+Exact Verify (istantaneo): ricalcolo hash → leaf → prova di inclusione → root on-chain
+
+Batch notarization: firma di sessioni intere (riduzione gas e UX semplice)
+
+MessageReceipt: ricevuta firmata off-chain per ogni messaggio (foglia)
+
+Storage zero-trust: blob cifrati client-side (AES-GCM con AAD = contentHash) su S3/IPFS
+
+Mini-App su Base: interfaccia “Sign / Verify” integrabile nel social di Base
+
+Open & portable: standard di hashing/merkle documentati, contratti event-only
+
+KB opzionale: indice vettoriale (pgvector) senza plaintext per ricerche interne
+
+Fiducia & Sicurezza
+
+Privacy first: il backend non vede mai i contenuti in chiaro
+
+Determinismo: regole di normalizzazione/hash pubbliche e testate
+
+Verificabilità pubblica: ancoraggio su Base (eventi RootSigned)
+
+No lock-in: formati e API aperti, verifica anche da CLI
+
+Compatibile ENS: identità leggibile (ENS reverse / TXT record per provider)
+
+Stack & integrazioni
+
+Chain: Base (Sepolia → Mainnet)
+
+Auth: Civic (OIDC) per login web (SIWE compatibile a seguire)
+
+AI: OpenRouter (routing multi-modello)
+
+Storage: S3/IPFS (solo ciphertext)
+
+DB: Postgres (+ pgvector per KB opt-in)
+
+SDK/Tools: Next.js Mini-App, Fastify API, viem/wagmi, Verify CLI
+
+(Opzionale) Privacy+ (Zama/TFHE):
+
+Near-duplicate privato: confronto SimHash in FHE → esito pass/fail cifrato
+
+Threshold semantico: “score ≥ soglia?” come bit (senza rivelare punteggio)
+
+Casi d’uso
+
+Media & Giornalismo: prova che un articolo/post non è stato alterato; verifica con hash-only
+
+Team legali & compliance: attestazione di contenuti sensibili senza condividerli
+
+Piattaforme UGC: prevenzione duplicati e plagio con controlli privati
+
+Ricerca & AI labs: provenance di dataset e prompt, riproducibilità degli esperimenti
+
+Sviluppo software: notarizzazione commit/snippet, prove di integrità su release
+
+Roadmap
+
+MVP (live)
+
+Registry event-only su Base, Mini-App “Sign/Verify”, API Fastify, Verify CLI
+
+Storage cifrato client-side, exact verify con proof on-chain
+
+Next
+
+Meta-tx / relayer (gasless) per signSessionRoot
+
+Provider Kit (SDK per terze parti: publish root + manifest)
+
+ZK add-on (Poseidon commit & Verifier) per “exact private verify”
+
+Privacy+
+
+Integrazione FHE: near-duplicate privato, threshold semantico (bit)
+
+Evidence firmata (enclave/worker) come attestazione opzionale
+
+Enterprise
+
+Tenancy/ruoli, audit log, KB opt-in, SLO/monitoring
+
+Domande frequenti (FAQ)
+
+PAN salva i miei contenuti?
+No. Salviamo solo hash, metadati e puntatori a blob cifrati lato client.
+
+Cosa pubblicate on-chain?
+Solo eventi con le root (sessione/batch). Mai testi o PII.
+
+Posso verificare con il solo hash?
+Sì. Lookup by hash → prova → radice → evento su Base.
+
+E se il testo è stato leggermente modificato?
+Puoi usare fuzzy/semantica per verificare near-duplicate o “stesso significato”. In modalità Privacy+, l’esito può essere un bit (pass/fail) calcolato su dati cifrati.
+
+È vendor-lock-in?
+No. Formati aperti, verifiche da CLI, contratti minimi event-only. Puoi auto-ospitare l’API.
+
+Serve un wallet?
+Per pubblicare root on-chain sì (wallet su Base). Per verificare hash-only, no.
+
+Posso integrarlo nella mia app?
+Sì. Offriamo API/SDK e Mini-App “drop-in” per Base.
+
+Sezione About / Mission
+
+Mission
+Rendere verificabile e privato l’intero ciclo di vita dei contenuti digitali — dai messaggi AI ai post pubblici — con uno standard semplice (hash→Merkle→root) e strumenti moderni (API, Mini-App, CLI), senza sacrificare la privacy.
+
+Perché ora
+AI generativa, disinformazione e contenuti remixati richiedono prove oggettive. PAN unisce provenienza e verifica in un flusso trasparente, economico e integrabile ovunque.
+
+Call to Action
+
+Prova la demo — notarizza il tuo primo messaggio in 30 secondi
+Integra PAN — leggi la doc API/SDK
+Partecipa — GitHub / Discord (community & feedback)
+
+Footer (riferimenti rapidi)
+
+Protocollo: specifiche hashing/Merkle
+
+Contratti: address su Base (Sepolia/Mainnet)
+
+SDK & CLI: pacchetti npm @panai/*
+
+Privacy: whitepaper “Storage zero-trust & verifiche private”
+
+Brand: logo kit + palette (Deep Space, Aurora Cyan, Ultramarine…)
+
+
+carlucciflaviano@gmail.com
