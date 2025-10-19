@@ -45,6 +45,13 @@ Normalize → Hash → Leaf → Merkle Root → RootSigned(Base)
 
 All proofs are **reproducible, verifiable, and privacy-preserving**.
 
+
+## 📊 Notarization Flow Diagram
+
+Below is a placeholder for the **PanAI Notarization Flow**, illustrating the process from message creation to on-chain proof and verification.
+
+<img width="2161" height="862" alt="notarization_flow" src="https://github.com/user-attachments/assets/894dbab1-705b-4e8e-9c79-414aa4ad3d88" />
+
 ---
 
 ## 🪙 Token Dynamics
@@ -56,7 +63,12 @@ Two tokens power the network:
 | **PANAI** | ERC-20 | Utility & rewards |
 | **PanSoul** | ERC-721 (Soulbound) | Reputation & trust |
 
----
+
+## 💰 PANAI Token Utility Diagram
+
+This section visualizes how the **PANAI token** is earned, distributed, and used within the ecosystem.
+
+<img width="3309" height="654" alt="panai_token" src="https://github.com/user-attachments/assets/289f6b46-f1d8-40ab-a35e-05617eb8033e" />
 
 ### 🪙 PANAI — Utility & Rewards
 
