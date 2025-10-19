@@ -89,6 +89,10 @@ This section visualizes how the **PANAI token** is earned, distributed, and used
 🧩 *Future:* Optional **ZK add-on** for private exact-match proofs.  
 🗳️ Governance for emissions and decay is planned post-MVP.
 
+## 🧬 PanSoul — Reputation Diagram
+
+<img width="3256" height="658" alt="pansoul_reputation" src="https://github.com/user-attachments/assets/b3d6d626-1902-4c8e-ab50-7e367f6e0e26" />
+
 ---
 
 ## 🧩 Product
