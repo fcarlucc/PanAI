@@ -55,12 +55,12 @@ function Header() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/70 backdrop-blur supports-[backdrop-filter]:bg-gray-950/60">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white backdrop-blur supports-[backdrop-filter]:bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Global">
         {/* Logo */}
         <a href="#hero" className="group inline-flex items-center gap-3">
-          <img src="/logopansenza.png" alt="Logo" className="h-10 w-15 object-contain" />
-          <span className="text-base font-bold tracking-tight text-gray-300 sm:inline">Protocol for AI Notarization</span>
+          <img src="/logopansenza.png" alt="Logo" className="h-12 w-16 object-contain drop-shadow-lg" />
+          <span className="text-base font-bold tracking-tight text-gray-900 sm:inline">Protocol for AI Notarization</span>
         </a>
 
         {/* Desktop nav */}
@@ -69,7 +69,7 @@ function Header() {
             <a
               key={s.id}
               href={`#${s.id}`}
-              className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 transition hover:bg-white/5 hover:text-white"
+              className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900"
             >
               {s.label}
             </a>
@@ -211,7 +211,7 @@ function About() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {/* <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {[
             { title: "Open standard", desc: "Public normalization & hashing rules; SDK & CLI." },
             { title: "Event-only on-chain", desc: "Only Merkle roots are public. Transparency without exposure." },
@@ -222,7 +222,7 @@ function About() {
               <p className="mt-2 text-sm text-gray-300">{f.desc}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
