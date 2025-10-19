@@ -1,0 +1,11 @@
+[
+  {
+    "user_id": "0x43227f601ab758c54baf632881867232011E1De1",
+    "created": 1760867375,
+    "provider": "openai",
+    "model": "openai/gpt-4o-mini",
+    "message": "ciao",
+    "response": "Ciao! Come posso aiutarti oggi?",
+    "system_fingerprint": "fp_560af6e559"
+  }
+]

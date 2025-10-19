@@ -1,0 +1,81 @@
+{
+  "conversations": [
+    {
+      "id": "1760856872339",
+      "title": "ciao",
+      "messages": [
+        {
+          "role": "user",
+          "content": "ciao"
+        },
+        {
+          "role": "assistant",
+          "content": "Ciao! Come posso aiutarti oggi?"
+        }
+      ],
+      "createdAt": "2025-10-19T09:49:32.397Z",
+      "updatedAt": "2025-10-19T09:49:33.721Z"
+    }
+  ],
+  "logs": [
+    {
+      "user_id": "0x43227f601ab758c54baf632881867232011E1De1",
+      "created": 1760867375,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "message": "ciao",
+      "response": "Ciao! Come posso aiutarti oggi?",
+      "system_fingerprint": "fp_560af6e559"
+    }
+  ],
+  "messages": [
+    {
+      "user_id": "0x43227f601ab758c54baf632881867232011E1De1",
+      "created": 1760867375,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "ciao",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "09321a9ba7",
+      "content_type": "user",
+      "content_hash": "ad7e5b2369cbba6741cf9b718e259f535e66bb8001ce0bacbcfc5aaa3f6fbb64",
+      "content_hash_fhe": "FHE_CTXT_b4edb2247283f0efc073a7062c09a00ce2383b26eb4bfc9f2adaf1e7089d8598",
+      "canonical_json": "{\"content\":\"ciao\",\"content_type\":\"user\",\"created\":1760867375,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"09321a9ba7\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x43227f601ab758c54baf632881867232011E1De1\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 0,
+      "proof": []
+    },
+    {
+      "user_id": "0x43227f601ab758c54baf632881867232011E1De1",
+      "created": 1760867375,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "Ciao! Come posso aiutarti oggi?",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "61db4c29ec",
+      "content_type": "assistant",
+      "content_hash": "ea93b6471f80b1ea4b58c86741a99229bc8e7b55e7e0fd03f6306127e387873a",
+      "content_hash_fhe": "FHE_CTXT_f3005f4004c8fb62cae4f410e385ad7600d0fbf30d650a306016ca6ad475b9c6",
+      "canonical_json": "{\"content\":\"Ciao! Come posso aiutarti oggi?\",\"content_type\":\"assistant\",\"created\":1760867375,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"61db4c29ec\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x43227f601ab758c54baf632881867232011E1De1\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 1,
+      "proof": [
+        {
+          "pos": "left",
+          "h": "ad7e5b2369cbba6741cf9b718e259f535e66bb8001ce0bacbcfc5aaa3f6fbb64"
+        }
+      ]
+    }
+  ],
+  "trees": {
+    "2025-10-19": {
+      "algo": "SHA-256",
+      "canon_rules": "JCS-like",
+      "leaves": [
+        "ad7e5b2369cbba6741cf9b718e259f535e66bb8001ce0bacbcfc5aaa3f6fbb64",
+        "ea93b6471f80b1ea4b58c86741a99229bc8e7b55e7e0fd03f6306127e387873a"
+      ],
+      "root": "a4c6cb33fe1d3f547c20c51e7086a9611be5f5b1535c25a31f283e5c6a584586"
+    }
+  }
+}
