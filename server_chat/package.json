@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node server_def.js",
     "dev": "node --watch server_def.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "build:prod": "NODE_ENV=production node build.js",
+    "start:dist": "node dist/server.js",
+    "clean": "rm -rf dist"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +24,8 @@
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "js-sha3": "^0.9.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.11"
   }
 }
