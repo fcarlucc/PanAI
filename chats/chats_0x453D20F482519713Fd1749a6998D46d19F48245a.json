@@ -1,0 +1,150 @@
+{
+  "conversations": [
+    {
+      "id": "1",
+      "title": "chi era leonardo da vinci",
+      "messages": [
+        {
+          "role": "user",
+          "content": "chi era leonardo da vinci"
+        },
+        {
+          "role": "assistant",
+          "content": "Leonardo da Vinci (1452-1519) è stato un poliedrico genio del Rinascimento italiano, noto per i suoi contributi in diversi campi come l'arte, la scienza, l'ingegneria, l'anatomia e la botanica. È celebre principalmente come pittore, con opere iconiche come \"La Gioconda\" e \"Il Cenacolo\". \n\nOltre alla pittura, Leonardo ha realizzato numerosi disegni e schizzi, molti dei quali riguardano invenzioni e studi scientifici, come macchine volanti, carri armati e studi sull'anatomia umana. La sua curiosità e il suo metodo di osservazione sistematica hanno influenzato profondamente il pensiero scientifico e artistico. \n\nLeonardo è spesso descritto come l'archetipo dell'uomo rinascimentale per la sua capacità di integrare arte e scienza. La sua eredità continua ad avere un impatto significativo in vari campi fino ad oggi."
+        },
+        {
+          "role": "user",
+          "content": "quante invenzioni ha sviluppato"
+        },
+        {
+          "role": "assistant",
+          "content": "Leonardo da Vinci ha sviluppato un gran numero di invenzioni e idee innovative, molte delle quali sono state esplorate attraverso i suoi disegni, schizzi e manoscritti. Anche se non tutte le sue invenzioni sono state costruite o messe in pratica durante la sua vita, la sua immaginazione ha anticipato molti sviluppi tecnologici futuri. Alcune delle invenzioni e concetti più noti attribuiti a lui includono:\n\n1. **Macchine volanti** - Disegni del volo umano, incluse l'ornitottero (una macchina che imita il volo degli uccelli) e il paracadute.\n2. **Carri armati** - Progetti di veicoli blindati per la guerra.\n3. **Sottomarini** - Idee per una nave subacquea.\n4. **Macchine da guerra** - Vari progetti per armi e dispositivi per assedi.\n5. **Strumenti musicali** - Disegni di strumenti innovativi.\n6. **Macchine per il sollevamento** - Dispositivi per sollevare oggetti pesanti.\n\nIn totale, si stima che Leonardo abbia conceptualmente ideato e progettato oltre **300** invenzioni e macchine diverse. Tuttavia, non tutte le sue idee erano realizzabili con la tecnologia del suo tempo. La maggior parte delle sue invenzioni rimase su carta e ha influito principalmente sul futuro sviluppo della scienza e della tecnologia."
+        }
+      ],
+      "createdAt": "2025-10-19T00:04:53.657Z",
+      "updatedAt": "2025-10-19T00:05:15.136Z"
+    }
+  ],
+  "logs": [
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832296,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "message": "chi era leonardo da vinci",
+      "response": "Leonardo da Vinci (1452-1519) è stato un poliedrico genio del Rinascimento italiano, noto per i suoi contributi in diversi campi come l'arte, la scienza, l'ingegneria, l'anatomia e la botanica. È celebre principalmente come pittore, con opere iconiche come \"La Gioconda\" e \"Il Cenacolo\". \n\nOltre alla pittura, Leonardo ha realizzato numerosi disegni e schizzi, molti dei quali riguardano invenzioni e studi scientifici, come macchine volanti, carri armati e studi sull'anatomia umana. La sua curiosità e il suo metodo di osservazione sistematica hanno influenzato profondamente il pensiero scientifico e artistico. \n\nLeonardo è spesso descritto come l'archetipo dell'uomo rinascimentale per la sua capacità di integrare arte e scienza. La sua eredità continua ad avere un impatto significativo in vari campi fino ad oggi.",
+      "system_fingerprint": "fp_560af6e559"
+    },
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832313,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "message": "quante invenzioni ha sviluppato",
+      "response": "Leonardo da Vinci ha sviluppato un gran numero di invenzioni e idee innovative, molte delle quali sono state esplorate attraverso i suoi disegni, schizzi e manoscritti. Anche se non tutte le sue invenzioni sono state costruite o messe in pratica durante la sua vita, la sua immaginazione ha anticipato molti sviluppi tecnologici futuri. Alcune delle invenzioni e concetti più noti attribuiti a lui includono:\n\n1. **Macchine volanti** - Disegni del volo umano, incluse l'ornitottero (una macchina che imita il volo degli uccelli) e il paracadute.\n2. **Carri armati** - Progetti di veicoli blindati per la guerra.\n3. **Sottomarini** - Idee per una nave subacquea.\n4. **Macchine da guerra** - Vari progetti per armi e dispositivi per assedi.\n5. **Strumenti musicali** - Disegni di strumenti innovativi.\n6. **Macchine per il sollevamento** - Dispositivi per sollevare oggetti pesanti.\n\nIn totale, si stima che Leonardo abbia conceptualmente ideato e progettato oltre **300** invenzioni e macchine diverse. Tuttavia, non tutte le sue idee erano realizzabili con la tecnologia del suo tempo. La maggior parte delle sue invenzioni rimase su carta e ha influito principalmente sul futuro sviluppo della scienza e della tecnologia.",
+      "system_fingerprint": "fp_560af6e559"
+    }
+  ],
+  "messages": [
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832296,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "chi era leonardo da vinci",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "2e94bcf2b0",
+      "content_type": "user",
+      "content_hash": "dd68ec1aabc478544483f50aa446d3148773ad1570917611a527e9f9cbcc37a2",
+      "content_hash_fhe": "FHE_CTXT_c4fb051db08c32dcc53fc97d066aec4b3b2d2db39a148122330142b4fc3e095e",
+      "canonical_json": "{\"content\":\"chi era leonardo da vinci\",\"content_type\":\"user\",\"created\":1760832296,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"2e94bcf2b0\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x453D20F482519713Fd1749a6998D46d19F48245a\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 0,
+      "proof": []
+    },
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832296,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "Leonardo da Vinci (1452-1519) è stato un poliedrico genio del Rinascimento italiano, noto per i suoi contributi in diversi campi come l'arte, la scienza, l'ingegneria, l'anatomia e la botanica. È celebre principalmente come pittore, con opere iconiche come \"La Gioconda\" e \"Il Cenacolo\". \n\nOltre alla pittura, Leonardo ha realizzato numerosi disegni e schizzi, molti dei quali riguardano invenzioni e studi scientifici, come macchine volanti, carri armati e studi sull'anatomia umana. La sua curiosità e il suo metodo di osservazione sistematica hanno influenzato profondamente il pensiero scientifico e artistico. \n\nLeonardo è spesso descritto come l'archetipo dell'uomo rinascimentale per la sua capacità di integrare arte e scienza. La sua eredità continua ad avere un impatto significativo in vari campi fino ad oggi.",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "fb9db34a8f",
+      "content_type": "assistant",
+      "content_hash": "8b439cfb70173032d906069c6613cd401878bcac7b0d5711ffd8d56fa094679c",
+      "content_hash_fhe": "FHE_CTXT_92d075fc6b5f7aba58ba3aebc43ff21fa4263c0a9188a02269fe7e2297665960",
+      "canonical_json": "{\"content\":\"Leonardo da Vinci (1452-1519) è stato un poliedrico genio del Rinascimento italiano, noto per i suoi contributi in diversi campi come l'arte, la scienza, l'ingegneria, l'anatomia e la botanica. È celebre principalmente come pittore, con opere iconiche come \\\"La Gioconda\\\" e \\\"Il Cenacolo\\\". \\n\\nOltre alla pittura, Leonardo ha realizzato numerosi disegni e schizzi, molti dei quali riguardano invenzioni e studi scientifici, come macchine volanti, carri armati e studi sull'anatomia umana. La sua curiosità e il suo metodo di osservazione sistematica hanno influenzato profondamente il pensiero scientifico e artistico. \\n\\nLeonardo è spesso descritto come l'archetipo dell'uomo rinascimentale per la sua capacità di integrare arte e scienza. La sua eredità continua ad avere un impatto significativo in vari campi fino ad oggi.\",\"content_type\":\"assistant\",\"created\":1760832296,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"fb9db34a8f\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x453D20F482519713Fd1749a6998D46d19F48245a\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 1,
+      "proof": [
+        {
+          "pos": "left",
+          "h": "dd68ec1aabc478544483f50aa446d3148773ad1570917611a527e9f9cbcc37a2"
+        }
+      ]
+    },
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832313,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "quante invenzioni ha sviluppato",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "e89cab1bbf",
+      "content_type": "user",
+      "content_hash": "71ed7964733a36e55886427b07cde45d907dbf68f9c2fe55f94f3f03ff791d12",
+      "content_hash_fhe": "FHE_CTXT_687e906368727c6dd93a7e0ca5e1db022c233fce134709666f69944ec88b23ee",
+      "canonical_json": "{\"content\":\"quante invenzioni ha sviluppato\",\"content_type\":\"user\",\"created\":1760832313,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"e89cab1bbf\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x453D20F482519713Fd1749a6998D46d19F48245a\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 2,
+      "proof": [
+        {
+          "pos": "right",
+          "h": "71ed7964733a36e55886427b07cde45d907dbf68f9c2fe55f94f3f03ff791d12"
+        },
+        {
+          "pos": "left",
+          "h": "233693907112ca303f388c5dde91b52d997ca67dace0ed89d39435f48d0a6ff0"
+        }
+      ]
+    },
+    {
+      "user_id": "0x453D20F482519713Fd1749a6998D46d19F48245a",
+      "created": 1760832313,
+      "provider": "openai",
+      "model": "openai/gpt-4o-mini",
+      "content": "Leonardo da Vinci ha sviluppato un gran numero di invenzioni e idee innovative, molte delle quali sono state esplorate attraverso i suoi disegni, schizzi e manoscritti. Anche se non tutte le sue invenzioni sono state costruite o messe in pratica durante la sua vita, la sua immaginazione ha anticipato molti sviluppi tecnologici futuri. Alcune delle invenzioni e concetti più noti attribuiti a lui includono:\n\n1. **Macchine volanti** - Disegni del volo umano, incluse l'ornitottero (una macchina che imita il volo degli uccelli) e il paracadute.\n2. **Carri armati** - Progetti di veicoli blindati per la guerra.\n3. **Sottomarini** - Idee per una nave subacquea.\n4. **Macchine da guerra** - Vari progetti per armi e dispositivi per assedi.\n5. **Strumenti musicali** - Disegni di strumenti innovativi.\n6. **Macchine per il sollevamento** - Dispositivi per sollevare oggetti pesanti.\n\nIn totale, si stima che Leonardo abbia conceptualmente ideato e progettato oltre **300** invenzioni e macchine diverse. Tuttavia, non tutte le sue idee erano realizzabili con la tecnologia del suo tempo. La maggior parte delle sue invenzioni rimase su carta e ha influito principalmente sul futuro sviluppo della scienza e della tecnologia.",
+      "system_fingerprint": "fp_560af6e559",
+      "nonce": "40c4c5af01",
+      "content_type": "assistant",
+      "content_hash": "ca7deb4c47f24dfe24ae222b2743d94f446f80b0785668a91b23b065652f4efc",
+      "content_hash_fhe": "FHE_CTXT_d3ee024b5cba0776a5121e5c856fe610f831001692d39f9a8d051b2852dd7000",
+      "canonical_json": "{\"content\":\"Leonardo da Vinci ha sviluppato un gran numero di invenzioni e idee innovative, molte delle quali sono state esplorate attraverso i suoi disegni, schizzi e manoscritti. Anche se non tutte le sue invenzioni sono state costruite o messe in pratica durante la sua vita, la sua immaginazione ha anticipato molti sviluppi tecnologici futuri. Alcune delle invenzioni e concetti più noti attribuiti a lui includono:\\n\\n1. **Macchine volanti** - Disegni del volo umano, incluse l'ornitottero (una macchina che imita il volo degli uccelli) e il paracadute.\\n2. **Carri armati** - Progetti di veicoli blindati per la guerra.\\n3. **Sottomarini** - Idee per una nave subacquea.\\n4. **Macchine da guerra** - Vari progetti per armi e dispositivi per assedi.\\n5. **Strumenti musicali** - Disegni di strumenti innovativi.\\n6. **Macchine per il sollevamento** - Dispositivi per sollevare oggetti pesanti.\\n\\nIn totale, si stima che Leonardo abbia conceptualmente ideato e progettato oltre **300** invenzioni e macchine diverse. Tuttavia, non tutte le sue idee erano realizzabili con la tecnologia del suo tempo. La maggior parte delle sue invenzioni rimase su carta e ha influito principalmente sul futuro sviluppo della scienza e della tecnologia.\",\"content_type\":\"assistant\",\"created\":1760832313,\"model\":\"openai/gpt-4o-mini\",\"nonce\":\"40c4c5af01\",\"provider\":\"openai\",\"system_fingerprint\":\"fp_560af6e559\",\"user_id\":\"0x453D20F482519713Fd1749a6998D46d19F48245a\"}",
+      "tree_id": "2025-10-19",
+      "leaf_index": 3,
+      "proof": [
+        {
+          "pos": "left",
+          "h": "71ed7964733a36e55886427b07cde45d907dbf68f9c2fe55f94f3f03ff791d12"
+        },
+        {
+          "pos": "left",
+          "h": "233693907112ca303f388c5dde91b52d997ca67dace0ed89d39435f48d0a6ff0"
+        }
+      ]
+    }
+  ],
+  "trees": {
+    "2025-10-19": {
+      "algo": "SHA-256",
+      "canon_rules": "JCS-like",
+      "leaves": [
+        "dd68ec1aabc478544483f50aa446d3148773ad1570917611a527e9f9cbcc37a2",
+        "8b439cfb70173032d906069c6613cd401878bcac7b0d5711ffd8d56fa094679c",
+        "71ed7964733a36e55886427b07cde45d907dbf68f9c2fe55f94f3f03ff791d12",
+        "ca7deb4c47f24dfe24ae222b2743d94f446f80b0785668a91b23b065652f4efc"
+      ],
+      "root": "6e9154a6f13c616a9287066f71032c08a0d53d35d0aadcfa53017606a2b7dbc6"
+    }
+  }
+}

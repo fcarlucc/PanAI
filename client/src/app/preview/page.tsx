@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthRedirect } from "@/hooks/useAuth";
 import { ConnectKitButton } from "connectkit";
 
@@ -40,20 +40,6 @@ function CustomConnectButton() {
    HEADER
 =========================== */
 function Header() {
-  const [open, setOpen] = useState(false);
-
-  // Scroll lock quando il menu mobile è aperto
-  useEffect(() => {
-    const root = document.documentElement;
-    if (open) {
-      const previous = root.style.overflow;
-      root.style.overflow = "hidden";
-      return () => {
-        root.style.overflow = previous || "";
-      };
-    }
-  }, [open]);
-
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/70 backdrop-blur supports-[backdrop-filter]:bg-gray-950/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Global">
@@ -64,12 +50,12 @@ function Header() {
             <span className="bg-gradient-to-r from-indigo-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
               PAN
             </span>
-            <span className="ml-1 hidden text-gray-300 sm:inline">— Protocol for AI Notarization</span>
+            <span className="ml-1 text-gray-300 hidden sm:inline">— Protocol for AI Notarization</span>
           </span>
         </a>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-1 lg:flex">
+        {/* Desktop nav - visibile solo su schermi grandi */}
+        <div className="hidden lg:flex items-center gap-1">
           {nav.map((s) => (
             <a
               key={s.id}
@@ -84,60 +70,11 @@ function Header() {
           </div>
         </div>
 
-        {/* Mobile trigger */}
-        <button
-          onClick={() => setOpen(true)}
-          className="lg:hidden rounded-md p-2 text-gray-300 hover:bg-white/5"
-          aria-label="Apri menu"
-        >
-          <svg className="size-6" fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </nav>
-
-      {/* Mobile Fullscreen Menu: overlay scuro + blur + z-index alto */}
-      {open && (
-        <div className="fixed inset-0 z-[100] lg:hidden">
-          {/* Sfondo opaco */}
-          <div className="absolute inset-0 bg-gray-950/95 backdrop-blur-md" />
-
-          {/* Pannello */}
-          <div className="absolute inset-0 mx-auto flex max-w-md flex-col">
-            <div className="flex items-center justify-between px-5 py-4">
-              <span className="text-sm font-semibold text-white">PAN</span>
-              <button
-                onClick={() => setOpen(false)}
-                className="rounded-md p-2 text-gray-300 hover:bg-white/5"
-                aria-label="Chiudi menu"
-              >
-                <svg className="size-6" fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="flex-1 overflow-y-auto px-4 pb-6">
-              <div className="grid gap-2">
-                {nav.map((s) => (
-                  <a
-                    key={s.id}
-                    href={`#${s.id}`}
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base font-medium text-white hover:bg-white/10"
-                  >
-                    {s.label}
-                  </a>
-                ))}
-              </div>
-            </nav>
-
-            <div className="px-5 pb-6">
-              <CustomConnectButton />
-            </div>
-          </div>
+        {/* Mobile - solo Connect Wallet */}
+        <div className="lg:hidden">
+          <CustomConnectButton />
         </div>
-      )}
+      </nav>
     </header>
   );
 }
