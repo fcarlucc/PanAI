@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthRedirect } from "@/hooks/useAuth";
 import { ConnectKitButton } from "connectkit";
 
@@ -7,10 +7,10 @@ import { ConnectKitButton } from "connectkit";
    NAV
 =========================== */
 const nav = [
-  { id: "hero", label: "Home" },
   { id: "about", label: "About" },
-  { id: "come-funziona", label: "Come funziona" },
-  { id: "features", label: "Prodotto" },
+  { id: "come-funziona", label: "How it works" },
+  { id: "token-dynamics", label: "Token Dynamics" }, // NEW
+  { id: "features", label: "Product" },
   { id: "usecases", label: "Use Cases" },
   { id: "roadmap", label: "Roadmap" },
   { id: "faq", label: "FAQ" },
@@ -40,22 +40,31 @@ function CustomConnectButton() {
    HEADER
 =========================== */
 function Header() {
+  const [open, setOpen] = useState(false);
+
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    const root = document.documentElement;
+    if (open) {
+      const previous = root.style.overflow;
+      root.style.overflow = "hidden";
+      return () => {
+        root.style.overflow = previous || "";
+      };
+    }
+  }, [open]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gray-950/70 backdrop-blur supports-[backdrop-filter]:bg-gray-950/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Global">
         {/* Logo */}
         <a href="#hero" className="group inline-flex items-center gap-3">
-          <div className="size-8 rounded-full bg-gradient-to-tr from-indigo-500 via-cyan-400 to-emerald-400 shadow-md shadow-indigo-700/20" />
-          <span className="text-base font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-indigo-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-              PAN
-            </span>
-            <span className="ml-1 text-gray-300 hidden sm:inline">— Protocol for AI Notarization</span>
-          </span>
+          <img src="/logopansenza.png" alt="Logo" className="h-10 w-15 object-contain" />
+          <span className="text-base font-bold tracking-tight text-gray-300 sm:inline">Protocol for AI Notarization</span>
         </a>
 
-        {/* Desktop nav - visibile solo su schermi grandi */}
-        <div className="hidden lg:flex items-center gap-1">
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-1 lg:flex">
           {nav.map((s) => (
             <a
               key={s.id}
@@ -70,11 +79,57 @@ function Header() {
           </div>
         </div>
 
-        {/* Mobile - solo Connect Wallet */}
-        <div className="lg:hidden">
-          <CustomConnectButton />
-        </div>
+        {/* Mobile trigger */}
+        <button
+          onClick={() => setOpen(true)}
+          className="lg:hidden rounded-md p-2 text-gray-300 hover:bg-white/5"
+          aria-label="Open menu"
+        >
+          <svg className="size-6" fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </nav>
+
+      {/* Mobile Fullscreen Menu */}
+      {open && (
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          <div className="absolute inset-0 bg-gray-950/95 backdrop-blur-md" />
+          <div className="absolute inset-0 mx-auto flex max-w-md flex-col">
+            <div className="flex items-center justify-between px-5 py-4">
+              <span className="text-sm font-semibold text-white">PAN</span>
+              <button
+                onClick={() => setOpen(false)}
+                className="rounded-md p-2 text-gray-300 hover:bg-white/5"
+                aria-label="Close menu"
+              >
+                <svg className="size-6" fill="none" stroke="currentColor" strokeWidth={1.7} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <nav className="flex-1 overflow-y-auto px-4 pb-6">
+              <div className="grid gap-2">
+                {nav.map((s) => (
+                  <a
+                    key={s.id}
+                    href={`#${s.id}`}
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base font-medium text-white hover:bg-white/10"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+
+            <div className="px-5 pb-6">
+              <CustomConnectButton />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -100,30 +155,33 @@ function Hero() {
           Open Standard • Base • Privacy by Design
         </p>
         <h1 className="mt-5 bg-gradient-to-br from-white via-white to-gray-300 bg-clip-text text-4xl font-extrabold leading-tight text-transparent sm:text-5xl md:text-6xl">
-          Certifica l'AI. <span className="whitespace-nowrap">Verifica la realtà.</span>
+          The world’s first<br></br>Protocol for AI Notarization
         </h1>
         <p className="mx-auto mt-3 max-w-3xl text-base text-gray-300 sm:text-lg md:text-xl">
-          PAN è lo strato di <span className="text-white font-semibold">provenance</span> per ogni messaggio:
-          normalizza, <span className="font-semibold">hash → Merkle → root on-chain</span>, certifica e verifica — anche
-          senza rivelare il contenuto.
+          Notarize any message—human or AI—on-chain with privacy. PAN makes provenance free, smart and autonomous with AI-driven notarization that costs near zero.
         </p>
-
+        <p className="mx-auto mt-3 max-w-3xl text-base text-gray-300 sm:text-lg md:text-xl">
+          <span className="text-white font-semibold">Craft it. Sign it. Prove it on-chain.</span>
+        </p>
+        <p className="mx-auto mt-3 max-w-3xl text-base text-gray-300 sm:text-lg md:text-xl">
+          Your words, forever verifiable.
+        </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <CustomConnectButton />
           <a
             href="#come-funziona"
             className="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
           >
-            Scopri come funziona
+            See how it works
           </a>
         </div>
 
         {/* Highlights */}
         <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
           {[
-            { icon: "⛓️", title: "Radici su Base", desc: "Eventi pubblici, mai testi/PII on-chain." },
-            { icon: "✍️", title: "Firma automatica", desc: "Chat AI o contenuti manuali, tutto notarizzato." },
-            { icon: "🔏", title: "Verifica privata", desc: "Confronti semantici privacy-preserving (FHE-ready)." },
+            { icon: "⛓️", title: "Roots on Base", desc: "Public events, no texts/PII on-chain" },
+            { icon: "✍️", title: "Auto-signing", desc: "AI chat or manual content, everything notarized." },
+            { icon: "🔏", title: "Private checks", desc: "Semantic comparisons privacy-preserving (FHE-ready)." },
           ].map((c) => (
             <div key={c.title} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-5">
               <div className="text-2xl">{c.icon}</div>
@@ -142,25 +200,22 @@ function Hero() {
 =========================== */
 function About() {
   return (
-    <section id="about" className="scroll-mt-24 bg-gray-950/40 py-16 sm:py-20">
+    <section id="about" className="scroll-mt-24 bg-gray-950/40 py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="bg-gradient-to-r from-indigo-400 via-cyan-300 to-emerald-300 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-            La fotografia della verità, per ogni messaggio
+            A tamper-evident truth layer for every message
           </h2>
           <p className="mx-auto mt-3 text-base text-gray-300 sm:text-lg">
-            L'AI accelera tutto: creazione, remix, diffusione. Con PAN puoi dimostrare{" "}
-            <span className="font-semibold text-white">chi ha scritto cosa</span>,{" "}
-            <span className="font-semibold text-white">se e come è cambiato</span>, e se due testi{" "}
-            <span className="font-semibold text-white">dicono la stessa cosa</span>.
+            AI speeds up creation and remix. With PAN you can prove <span className="font-semibold text-white">who authored what</span>, <span className="font-semibold text-white">if and how it changed</span>, and whether two texts <span className="font-semibold text-white">mean the same</span>.
           </p>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {[
-            { title: "Standard aperto", desc: "Normalizzazione e hashing pubblici; SDK & CLI." },
-            { title: "Event-only on-chain", desc: "Pubbliche solo le root Merkle. Trasparenza senza esporre." },
-            { title: "Privacy by design", desc: "Il backend non vede plaintext. FHE/ZK pronti come add-on." },
+            { title: "Open standard", desc: "Public normalization & hashing rules; SDK & CLI." },
+            { title: "Event-only on-chain", desc: "Only Merkle roots are public. Transparency without exposure." },
+            { title: "Privacy by design", desc: "No plaintext on the server. FHE add-on path ready (ZK optional in the future)." },
           ].map((f) => (
             <div key={f.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <h3 className="text-base font-semibold text-white">{f.title}</h3>
@@ -174,20 +229,14 @@ function About() {
 }
 
 /* ===========================
-   COME FUNZIONA
+   HOW IT WORKS
 =========================== */
 function How() {
   const [tab, setTab] = useState<"chat" | "sign" | "verify">("chat");
   return (
-    <section id="come-funziona" className="scroll-mt-24 py-16 sm:py-20">
+    <section id="come-funziona" className="scroll-mt-24 py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">Come funziona</h2>
-        <p className="mx-auto mt-2 max-w-3xl text-center text-sm text-gray-300 sm:text-base">
-          Pipeline deterministica: <span className="font-semibold">Unicode NFC + LF</span> →{" "}
-          <span className="font-semibold">SHA-256</span> → <span className="font-semibold">Merkle per sessione</span> →{" "}
-          <span className="font-semibold">root on-chain</span>. Verifica con hash-only o check semantico.
-        </p>
-
+        <h2 className="text-center text-3xl font-bold text-white sm:text-4xl mt-4">How it works</h2>
         {/* Tabs */}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           {(["chat", "sign", "verify"] as const).map((t) => (
@@ -200,7 +249,7 @@ function How() {
                   : "border border-white/10 bg-white/5 text-gray-200 hover:bg-white/10"
               }`}
             >
-              {t === "chat" ? "💬 AI Chat" : t === "sign" ? "✍️ Signa contenuto" : "✅ Verifica"}
+              {t === "chat" ? "💬 AI Chat" : t === "sign" ? "✍️ Notarize content" : "✅ Verify"}
             </button>
           ))}
         </div>
@@ -209,34 +258,31 @@ function How() {
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
           {tab === "chat" && (
             <div className="space-y-2 text-gray-300 sm:space-y-3">
-              <h3 className="text-xl font-bold text-white sm:text-2xl">AI Chat (multi-modello) con firma automatica</h3>
+              <h3 className="text-xl font-bold text-white sm:text-2xl">AI Chat (multi-model) with auto-signing</h3>
               <ul className="list-disc pl-5 text-sm sm:text-base">
-                <li>Scegli il modello o usa il routing intelligente.</li>
-                <li>Ogni messaggio viene normalizzato, hashato e inserito nel Merkle della sessione.</li>
-                <li>Con <span className="font-semibold text-white">Finalize</span> pubblichi la root su Base (evento pubblico).</li>
-                <li>Badge del messaggio dai "3 puntini" accanto alla bubble.</li>
+                <li>Pick a model or use smart routing.</li>
+                <li>Each message is normalized, hashed and added to the session Merkle.</li>
+                <li><span className="font-semibold text-white">Finalize</span> publishes the root on Base (public event).</li>
+                <li>Copy the message badge from the “three dots”.</li>
               </ul>
             </div>
           )}
           {tab === "sign" && (
             <div className="space-y-2 text-gray-300 sm:space-y-3">
-              <h3 className="text-xl font-bold text-white sm:text-2xl">Signa qualsiasi contenuto (senza AI)</h3>
+              <h3 className="text-xl font-bold text-white sm:text-2xl">Notarize any content (no AI)</h3>
               <ul className="list-disc pl-5 text-sm sm:text-base">
-                <li>Incolla testo o carica un file: cifratura client-side (AES-GCM) + hash vincolante.</li>
-                <li>Ricevi il <span className="font-semibold text-white">Badge creatore</span> e lo storico nel pannello laterale.</li>
-                <li>Opzionale: metadati (autore/modello/ts) firmati nella sessione.</li>
+                <li>Paste text or upload a file: client-side encryption (AES-GCM) + binding hash.</li>
+                <li>Get the <span className="font-semibold text-white">Creator Badge</span> and history in the sidebar.</li>
+                <li>Optional: signed metadata (author/model/timestamp) in the session.</li>
               </ul>
             </div>
           )}
           {tab === "verify" && (
             <div className="space-y-2 text-gray-300 sm:space-y-3">
-              <h3 className="text-xl font-bold text-white sm:text-2xl">Verifica esatta o "stesso significato"</h3>
+              <h3 className="text-xl font-bold text-white sm:text-2xl">Exact or same-meaning verification</h3>
               <ul className="list-disc pl-5 text-sm sm:text-base">
-                <li><span className="font-semibold text-white">Solo hash</span>: prova di esistenza/integrità via root on-chain.</li>
-                <li>
-                  <span className="font-semibold text-white">Hash + testo</span>: esatto / piccoli edit / parziale / diverso.
-                  Opzionale: confronto privacy-preserving con riassunti cifrati (FHE).
-                </li>
+                <li><span className="font-semibold text-white">Hash-only</span>: proof of existence/integrity via Merkle root.</li>
+                <li><span className="font-semibold text-white">Hash + text</span>: exact / minor edits / partial / different. Optional privacy-preserving comparison using encrypted summaries (FHE).</li>
               </ul>
             </div>
           )}
@@ -247,16 +293,63 @@ function How() {
 }
 
 /* ===========================
-   PRODOTTO (Caratteristiche + Fiducia + Tech)
+   TOKEN DYNAMICS (NEW)
+=========================== */
+function TokenDynamics() {
+  return (
+    <section id="token-dynamics" className="scroll-mt-24 py-10 sm:py-12">
+      <div className="mx-auto max-w-6xl px-4">
+        <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">Token Dynamics</h2>
+        <p className="mx-auto mt-2 max-w-3xl text-center text-sm text-gray-300 sm:text-base">
+          Two tokens power the network: <span className="font-semibold text-white">PANAI (ERC-20)</span> for utility/rewards and <span className="font-semibold text-white">PanSoul (SBT NFT)</span> for reputation. Rewards are earned for honest, useful notarization and reduced for spam or abuse.
+        </p>
+
+        <div className="mt-8 flex flex-col gap-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 className="text-base font-semibold text-white">PANAI — Utility & Rewards</h3>
+            <ul className="mt-2 list-disc pl-5 text-sm text-gray-300">
+              <li><span className="text-white font-semibold">Earn</span>: on <em>Finalize</em>, based on unique messages notarized and later verified (deduped per hash/session).</li>
+              <li><span className="text-white font-semibold">Claim</span>: pending rewards accrue off-chain and can be claimed on-chain; gasless meta-tx planned.</li>
+              <li><span className="text-white font-semibold">Anti-abuse</span>: zero reward for duplicates, bot-like bursts, or failed proofs; cooldown on repeated offenses.</li>
+              <li><span className="text-white font-semibold">Costs</span>: AI-assisted aggregation makes notarization near-zero cost for users.</li>
+            </ul>
+            <div className="flex justify-center mt-6">
+              <img src="/chartpanai.png" alt="PANAI Token Diagram" style={{maxHeight:'320px'}} />
+            </div>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 className="text-base font-semibold text-white">PanSoul — Reputation (SBT)</h3>
+            <ul className="mt-2 list-disc pl-5 text-sm text-gray-300">
+              <li><span className="text-white font-semibold">Increase</span>: when your content is verified by others, or referenced in certified sessions.</li>
+              <li><span className="text-white font-semibold">Decay / Slash</span>: reports confirmed, mass spam, or fraudulent attestations reduce score; NFT metadata is updated on-chain.</li>
+              <li><span className="text-white font-semibold">Fairness</span>: daily caps per wallet, similarity-based dedupe, optional identity signals (ENS/Civic) to limit sybil.</li>
+              <li><span className="text-white font-semibold">Transparency</span>: all updates are emitted as events; appeals window for disputes.</li>
+            </ul>
+            <div className="flex justify-center mt-6">
+              <img src="/chartsoul.png" alt="PanSoul Token Diagram" style={{maxHeight:'320px'}} />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4 text-xs text-gray-300 sm:text-sm">
+          Future: optional <span className="text-white font-semibold">ZK add-on</span> for private exact-match proofs (when feasible). Governance for emissions/decay is planned post-MVP.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================
+   PRODUCT (Features)
 =========================== */
 function GradientCard({ title, desc, icon }: { title: string; desc: string; icon: string }) {
   return (
-    <div className="relative rounded-2xl p-[1px]">
+    <div className="relative rounded-2xl p-[1px] min-h-[220px] flex flex-col justify-center">
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/30 via-cyan-300/30 to-emerald-300/30 blur-sm" />
-      <div className="relative rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
-        <div className="text-xl sm:text-2xl">{icon}</div>
-        <h3 className="mt-2 text-sm font-semibold text-white sm:text-base">{title}</h3>
-        <p className="text-xs text-gray-300 sm:text-sm">{desc}</p>
+      <div className="relative rounded-2xl border border-white/10 bg-white/5 px-4 py-3 flex flex-col items-center justify-center h-full">
+        <div className="text-xl sm:text-2xl mb-1">{icon}</div>
+        <h3 className="text-sm font-semibold text-white sm:text-base text-center mb-1">{title}</h3>
+        <p className="text-xs text-gray-300 sm:text-sm text-center leading-tight">{desc}</p>
       </div>
     </div>
   );
@@ -264,44 +357,31 @@ function GradientCard({ title, desc, icon }: { title: string; desc: string; icon
 
 function Features() {
   const blocks = [
-    { icon: "🧩", title: "Batch notarization", desc: "Firma conversazioni intere con un solo evento." },
-    { icon: "🏷️", title: "Badge & certificati", desc: "ZIP/manifest verificabili, pronti da condividere." },
-    { icon: "🔎", title: "Verify ovunque", desc: "Web, CLI o API: stessa prova, stessi risultati." },
-    { icon: "🔒", title: "Privacy-first", desc: "Solo blob cifrati e metadati minimi. Nessun plaintext sul server." },
-    { icon: "🧪", title: "Determinismo", desc: "Regole pubbliche di normalizzazione/hash e test cross-platform." },
-    { icon: "🧾", title: "Verificabilità", desc: "Eventi RootSigned su Base; prove riproducibili." },
-    { icon: "⚙️", title: "Stack moderno", desc: "Next.js, Fastify, viem/wagmi, Postgres, S3/IPFS." },
-    { icon: "🤖", title: "OpenRouter", desc: "Multi-modello + routing intelligente." },
-    { icon: "🧠", title: "FHE/ZK ready", desc: "Percorso chiaro per confronti confidenziali e prove zero-knowledge." },
+    { icon: "🧩", title: "Batch notarization", desc: "Sign entire conversations with one on-chain event." },
+    { icon: "🏷️", title: "Badges & certificates", desc: "Shareable manifest/ZIP, publicly verifiable." },
+    { icon: "🔎", title: "Verify anywhere", desc: "Web, CLI or API: same proofs, same results." },
+    { icon: "🔒", title: "Privacy-first", desc: "Only encrypted blobs and minimal metadata. No plaintext server-side." },
+    { icon: "🧪", title: "Deterministic", desc: "Public normalization/hash rules with cross-platform tests." },
+    { icon: "🧾", title: "Auditable", desc: "RootSigned events on Base; reproducible proofs." },
+    { icon: "⚙️", title: "Modern stack", desc: "Next.js, Fastify, viem/wagmi, Postgres, S3/IPFS." },
+    { icon: "🤖", title: "OpenRouter", desc: "Multi-model with smart routing." },
+    { icon: "🧠", title: "FHE-ready", desc: "Private similarity checks via encrypted summaries. (ZK possible in future.)" },
   ];
   return (
-    <section id="features" className="scroll-mt-24 bg-gray-950 py-16 sm:py-24">
+    <section id="features" className="scroll-mt-24 bg-gray-950 py-10 sm:py-14">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="text-3xl font-bold text-white">Prodotto</h2>
-          <div className="hidden items-center gap-2 text-[11px] text-gray-400 sm:flex">
-            {["Base", "OpenRouter", "Civic", "Zama", "ENS", "1inch"].map((t) => (
-              <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                {t}
-              </span>
-            ))}
-          </div>
+        <div className="flex justify-center mb-8">
+          <img src="/chart.png" alt="PAN schema" style={{maxHeight:'700px'}} />
         </div>
-
-        <p className="mt-2 max-w-3xl text-sm text-gray-300 sm:text-base">
-          Notarizza contenuti, pubblica radici su Base, verifica ovunque. Privacy by design, API aperte e upgrade path
-          verso FHE/ZK.
+        <TokenDynamics />
+        <h2 className="text-3xl font-bold text-white mt-16 mb-6">Product</h2>
+        <p className="mt-1 max-w-3xl text-sm text-gray-300 sm:text-base mb-8">
+          Notarize content, anchor roots on Base, and verify anywhere. Privacy by design, open APIs and a clear path to private comparisons with FHE.
         </p>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {blocks.map((b) => (
             <GradientCard key={b.title} icon={b.icon} title={b.title} desc={b.desc} />
           ))}
-        </div>
-
-        {/* Strip on-chain */}
-        <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4 font-mono text-[11px] text-gray-300 sm:text-xs">
-          onchain: base-sepolia • contract: Registry • event: RootSigned(root=<span className="text-emerald-300">0x…ab</span>, author=<span className="text-emerald-300">0x…9f</span>, kind="session", version=1, ts=1712345678)
         </div>
       </div>
     </section>
@@ -313,17 +393,17 @@ function Features() {
 =========================== */
 function UseCases() {
   const cases = [
-    { t: "Media & Giornalismo", d: "Prove di integrità/alterazione, debunk e catene editoriali." },
-    { t: "Legale & Compliance", d: "Attestazioni verificabili senza condividere il plaintext." },
-    { t: "Piattaforme UGC", d: "Anti-plagio/abuso con verifiche pubbliche e badge reputazione." },
-    { t: "Ricerca & AI Labs", d: "Provenance di dataset/prompt e audit dei risultati." },
-    { t: "Software", d: "Notarizza commit/snippet; prove su release/binari." },
-    { t: "Impresa", d: "Policy-grade notarization per documenti, email e contratti." },
+    { t: "Media & Journalism", d: "Integrity/alteration proofs, debunking, editorial chains." },
+    { t: "Legal & Compliance", d: "Verifiable attestations without sharing plaintext." },
+    { t: "UGC Platforms", d: "Anti-plagiarism/abuse with public checks and reputation badges." },
+    { t: "Research & AI Labs", d: "Dataset/prompt provenance and audit trails." },
+    { t: "Software", d: "Notarize commits/snippets; proofs on releases/binaries." },
+    { t: "Enterprise", d: "Policy-grade notarization for documents, email and contracts." },
   ];
   return (
-    <section id="usecases" className="scroll-mt-24 bg-gray-950/40 py-16 sm:py-24">
+    <section id="usecases" className="scroll-mt-24 bg-gray-950/40 py-10 sm:py-14">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-3xl font-bold text-white">Casi d'uso</h2>
+        <h2 className="text-3xl font-bold text-white">Use Cases</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((c) => (
             <div key={c.t} className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
@@ -338,7 +418,7 @@ function UseCases() {
 }
 
 /* ===========================
-   ROADMAP (fix pallini + copy chiaro)
+   ROADMAP (ZK only as future)
 =========================== */
 function Roadmap() {
   const items: {
@@ -348,54 +428,54 @@ function Roadmap() {
     points: string[];
   }[] = [
     {
-      when: "Ora (MVP)",
+      when: "Now (MVP)",
       color: "indigo",
-      title: "Online la base del protocollo",
+      title: "Protocol foundation live",
       points: [
-        "Mini-App: Chat, Sign, Verify (exact con hash) — live",
-        "Root Merkle pubbliche su Base Sepolia (eventi RootSigned)",
-        "Storage cifrato client-side; nessun plaintext sul server",
-        "Verify CLI + SDK (regole di hashing/frames documentate)",
+        "Mini-App: Chat, Sign, Verify (exact with hash) — live",
+        "Merkle roots on Base Sepolia (RootSigned events)",
+        "Client-side encryption; no plaintext on server",
+        "Verify CLI + SDK (hashing/frames documented)",
       ],
     },
     {
-      when: "Prossimi 30 giorni",
+      when: "Next 30 days",
       color: "cyan",
-      title: "Spec aperta e profili verificabili",
+      title: "Open spec & verifiable profiles",
       points: [
-        "Spec PAN v1 (open) + test vectors (NFC/CRLF, pari/dispari, batch)",
-        "Profili con PAN & PanSoul (SBT reputazione) + Rewards (testnet)",
-        "ENS reverse + badge 'Verificato con PAN' nei certificati",
+        "PAN v1 spec + test vectors (NFC/CRLF, even/odd, batch)",
+        "Profiles with PANAI rewards & PanSoul reputation (testnet)",
+        "ENS reverse + “Verified with PAN” certificates",
       ],
     },
     {
-      when: "60–90 giorni",
+      when: "60–90 days",
       color: "emerald",
-      title: "Mainnet & partner utili",
+      title: "Mainnet & useful partners",
       points: [
         "Base Mainnet: Registry v1 + RewardsDistributor",
-        "Integrazione 1inch API per metadati/balances nel profilo",
-        "Pilot FHE (Zama): confronto privato per near-duplicate/partial",
+        "1inch API integration for metadata/balances in profile",
+        "FHE pilot (Zama): private near-duplicate/partial checks",
       ],
     },
     {
       when: "Q3",
       color: "violet",
-      title: "Dallo standard draft all'adozione",
+      title: "From draft to adoption",
       points: [
-        "Draft 'PAN Core' pubblico (call per feedback community/partners)",
-        "Provider Kit: SDK per piattaforme terze (publish/verify senza lock-in)",
-        "Mini-App Social su Base + leaderboard reputazione PanSoul",
+        "Public “PAN Core” draft (community/partner feedback)",
+        "Provider Kit: SDK for third-party platforms (publish/verify, no lock-in)",
+        "Base mini-app + PanSoul leaderboard",
       ],
     },
     {
       when: "Q4",
       color: "rose",
-      title: "Standard 1.0 + privacy avanzata",
+      title: "Standard 1.0 + privacy extras",
       points: [
-        "PAN 1.0: freeze della spec + reference implementation",
-        "ZK add-on: exact-match privata (senza rivelare il testo)",
-        "Programma interoperabilità: provider/modelli che firmano PAN",
+        "PAN 1.0: spec freeze + reference implementation",
+        "Optional ZK add-on for private exact-match (when feasible)",
+        "Interoperability program: providers/models signing PAN",
       ],
     },
   ];
@@ -409,15 +489,14 @@ function Roadmap() {
   } as const;
 
   return (
-    <section id="roadmap" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="roadmap" className="scroll-mt-24 py-10 sm:py-14">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-3xl font-bold text-white">Roadmap</h2>
         <p className="mt-2 max-w-3xl text-sm text-gray-300 sm:text-base">
-          Passi concreti verso uno <span className="font-semibold text-white">standard aperto</span> di notarizzazione
-          dei contenuti (umani o AI) con ancoraggio su Base, verificabile da chiunque.
+          Concrete steps toward an <span className="font-semibold text-white">open notarization standard</span> for human and AI content, anchored on Base and verifiable by anyone.
         </p>
 
-        {/* Linea + pallini allineati */}
+        {/* Line + dots */}
         <div className="relative mt-8 sm:mt-10">
           <div className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gradient-to-b from-indigo-400/40 via-cyan-300/30 to-emerald-300/30" />
           <ol className="space-y-6 sm:space-y-8">
@@ -444,9 +523,7 @@ function Roadmap() {
         </div>
 
         <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-xs text-gray-300 sm:text-sm">
-          <span className="font-semibold text-white">In pratica:</span> oggi firmi e verifichi con l'hash. Nei prossimi
-          rilasci aggiungiamo profili, reputazione e verifiche private; a fine percorso, "PAN 1.0" sarà uno standard
-          adottabile da piattaforme e modelli AI per firmare/verificare in modo interoperabile.
+          <span className="font-semibold text-white">In practice:</span> today you can sign and verify with just the hash. Next we add profiles, rewards and private checks; by PAN 1.0 it becomes an open, interoperable standard for platforms and AI models.
         </div>
       </div>
     </section>
@@ -458,15 +535,15 @@ function Roadmap() {
 =========================== */
 function FAQ() {
   const qs = [
-    { q: "Salvate i contenuti?", a: "No. Solo hash/metadati e puntatori a blob cifrati lato client. Nessun plaintext sul server." },
-    { q: "Cosa va on-chain?", a: "Solo eventi con le root Merkle di sessione/batch. Nessun testo o PII." },
-    { q: "Posso verificare con il solo hash?", a: "Sì. Lookup → prova di inclusione → root → evento su Base." },
-    { q: "E se il testo cambia poco?", a: "Riassunti compatti (SimHash/Bloom) e, opzionalmente, FHE per confronto privato." },
+    { q: "Do you store content?", a: "No. Only hashes/metadata and pointers to client-side encrypted blobs. No plaintext server-side." },
+    { q: "What goes on-chain?", a: "Only Merkle roots (session/batch). No text or PII." },
+    { q: "Can I verify with just the hash?", a: "Yes. Lookup → inclusion proof → root → event on Base." },
+    { q: "What if the text slightly changes?", a: "Compact summaries (SimHash/Bloom) and optional privacy-preserving comparison (FHE)." },
   ];
   return (
-    <section id="faq" className="scroll-mt-24 bg-gray-950/40 py-16 sm:py-24">
+    <section id="faq" className="scroll-mt-24 bg-gray-950/40 py-10 sm:py-14">
       <div className="mx-auto max-w-4xl px-4">
-        <h2 className="text-3xl font-bold text-white">Domande frequenti</h2>
+        <h2 className="text-3xl font-bold text-white">FAQ</h2>
         <div className="mt-6 space-y-3">
           {qs.map((x) => (
             <details key={x.q} className="group rounded-xl border border-white/10 bg-white/5 p-5">
@@ -487,14 +564,14 @@ function FAQ() {
 =========================== */
 function CTA() {
   return (
-    <section id="cta" className="relative scroll-mt-24 overflow-hidden py-16 sm:py-24">
+    <section id="cta" className="relative scroll-mt-24 overflow-hidden py-10 sm:py-14">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,91,255,.18),rgba(0,0,0,0))] blur-2xl" aria-hidden />
       <div className="relative mx-auto max-w-3xl px-4 text-center">
         <h2 className="bg-gradient-to-r from-indigo-200 via-cyan-100 to-emerald-200 bg-clip-text text-2xl font-extrabold text-transparent sm:text-3xl md:text-4xl">
-          Notarizza il tuo primo messaggio in 30 secondi
+          Notarize your first message
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-300 sm:text-base">
-          Un click per la prova di esistenza. Un evento per la storia. Una verifica per tutti.
+          One click for proof of existence. One event for history. One verification for everyone.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <CustomConnectButton />
@@ -502,12 +579,9 @@ function CTA() {
             href="/docs"
             className="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:text-base"
           >
-            Doc API/SDK
+            Docs & SDK
           </a>
         </div>
-        <p className="mt-5 text-[11px] text-gray-400 sm:text-xs">
-          Protocollo: hashing/Merkle • Chain: Base • SDK/CLI: @panai/* • Privacy: FHE-ready
-        </p>
       </div>
     </section>
   );
@@ -517,7 +591,7 @@ function CTA() {
    PAGE
 =========================== */
 export default function PreviewPage() {
-  // Questo hook gestisce il redirect automatico a / quando l'utente si connette
+  // Redirect to / when the user connects
   useAuthRedirect();
 
   return (
@@ -526,8 +600,8 @@ export default function PreviewPage() {
       <main>
         <Hero />
         <About />
-        <How />
-        <Features />
+  <How />
+  <Features />
         <UseCases />
         <Roadmap />
         <FAQ />
